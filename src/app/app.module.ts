@@ -11,6 +11,7 @@ import { UserService } from './services/user.service';
 import { PostsComponent } from './components/posts/posts.component';
 import { PostsService } from './services/posts.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     UserComponent,
     UsersComponent,
     NavbarComponent,
-    PostsComponent
+    PostsComponent,
+    PostFormComponent
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [UserService, PostsService],
