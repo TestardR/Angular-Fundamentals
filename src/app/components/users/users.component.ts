@@ -7,10 +7,16 @@ import { User } from 'src/app/models/User';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
+  user: User = {
+    firstName: '',
+    lastName: '',
+    email: ''
+  };
   users: User[];
   showExtended: boolean = true;
   loaded: boolean = false;
-  enableAdd: boolean = true;
+  enableAdd: boolean = false;
+  showUserForm: boolean = false;
 
   constructor() {}
 
@@ -19,38 +25,27 @@ export class UsersComponent implements OnInit {
       {
         firstName: 'Kevin',
         lastName: 'Johnson',
-        age: 71,
-        address: {
-          street: 'Twin St',
-          city: 'Miami',
-          state: 'Alabama'
-        },
+        email: 'kevin@gmail.com',
         isActive: true,
-        registered: new Date('01/02/2018 08:30:00')
+        registered: new Date('01/02/2018 08:30:00'),
+        hide: true
       },
       {
         firstName: 'Karen',
         lastName: 'Madall',
-        age: 55,
-        address: {
-          street: 'Millow St',
-          city: 'Florida',
-          state: 'Alabama'
-        },
+        email: 'karen@gmail.com',
         isActive: false,
-        registered: new Date('01/12/2018 11:30:02')
+        registered: new Date('01/12/2018 11:30:02'),
+        hide: true
       },
       {
         firstName: 'Romain',
         lastName: 'Federer',
-        age: 31,
-        address: {
-          street: 'Main St',
-          city: 'Island',
-          state: 'Alabama'
-        },
+
+        email: 'romain@gmail.com',
         isActive: true,
-        registered: new Date('12/12/2020 10:30:00')
+        registered: new Date('12/12/2020 10:30:00'),
+        hide: true
       }
     ];
 
@@ -58,6 +53,18 @@ export class UsersComponent implements OnInit {
   }
 
   addUser(user: User) {
-    this.users.push(user);
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    this.users.unshift(this.user);
+    this.user = {
+      firstName: '',
+      lastName: '',
+      email: ''
+    };
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
+    console.log(123);
   }
 }
